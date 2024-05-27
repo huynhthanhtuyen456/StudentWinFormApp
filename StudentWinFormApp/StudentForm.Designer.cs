@@ -38,6 +38,7 @@
             stdIDErrorMessageLabel = new Label();
             stdNameErrorMessageLabel = new Label();
             stdDateOfBirthErrorMessageLabel = new Label();
+            listViewStudentList = new ListView();
             SuspendLayout();
             // 
             // stdIDLabel
@@ -86,7 +87,7 @@
             // 
             // btnClick
             // 
-            btnClick.Location = new Point(167, 96);
+            btnClick.Location = new Point(131, 230);
             btnClick.Name = "btnClick";
             btnClick.Size = new Size(100, 23);
             btnClick.TabIndex = 6;
@@ -126,11 +127,21 @@
             stdDateOfBirthErrorMessageLabel.Size = new Size(0, 15);
             stdDateOfBirthErrorMessageLabel.TabIndex = 10;
             // 
+            // listViewStudentList
+            // 
+            listViewStudentList.Location = new Point(12, 112);
+            listViewStudentList.Name = "listViewStudentList";
+            listViewStudentList.Size = new Size(327, 97);
+            listViewStudentList.TabIndex = 11;
+            listViewStudentList.UseCompatibleStateImageBehavior = false;
+            listViewStudentList.View = View.Details;
+            // 
             // StudentForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(listViewStudentList);
             Controls.Add(stdDateOfBirthErrorMessageLabel);
             Controls.Add(stdNameErrorMessageLabel);
             Controls.Add(stdIDErrorMessageLabel);
@@ -160,5 +171,6 @@
         private Label stdIDErrorMessageLabel;
         private Label stdNameErrorMessageLabel;
         private Label stdDateOfBirthErrorMessageLabel;
+        private ListView listViewStudentList;
     }
 }

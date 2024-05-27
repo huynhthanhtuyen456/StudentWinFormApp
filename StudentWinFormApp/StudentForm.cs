@@ -19,9 +19,17 @@ namespace StudentWinFormApp
 {
     public partial class StudentForm : Form
     {
+        Regex IDRgxPattern = new Regex(@"[A-Za-z0-9]+$");
+        Regex NameRgxPattern = new Regex(@"[A-Za-z\s]+$");
         public StudentForm()
         {
             InitializeComponent();
+            this.listViewStudentList.Columns.Add("ID");
+            this.listViewStudentList.Columns.Add("Name");
+            this.listViewStudentList.Columns.Add("Date Of Birth");
+            this.listViewStudentList.AutoResizeColumn(2, ColumnHeaderAutoResizeStyle.HeaderSize);
+            this.listViewStudentList.Columns.Add("Age");
+
         }
 
         private void StudentForm_Load(object sender, EventArgs e)
@@ -50,8 +58,7 @@ namespace StudentWinFormApp
                 stdNameErrorMessageLabel.Text = "Student Name cannot be empty";
                 stdNameErrorMessageLabel.ForeColor = Color.Red;
             }
-            Regex idRegex = new Regex(@"[A-Za-z\s]{1,}");
-            if (idRegex.IsMatch(stdName))
+            if (this.NameRgxPattern.IsMatch(stdName))
             {
                 SetBtnClick();
             }
@@ -103,8 +110,19 @@ namespace StudentWinFormApp
                     Name = formattedName,
                     DateOfBirth = dateOfBirthDate,
                 };
-
-                MessageBox.Show($"Your age is {student.CalculateAge()}.", $"Hello, {student.Name}!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.listViewStudentList.Items.Add(new ListViewItem(
+                    new string[]
+                    {
+                        student.Id.ToString(),
+                        student.Name,
+                        student.DateOfBirth.ToShortDateString(),
+                        student.CalculateAge().ToString(),
+                    }
+                ));
+                this.listViewStudentList.AutoResizeColumn(0, ColumnHeaderAutoResizeStyle.ColumnContent);
+                this.listViewStudentList.AutoResizeColumn(1, ColumnHeaderAutoResizeStyle.ColumnContent);
+                this.listViewStudentList.AutoResizeColumn(2, ColumnHeaderAutoResizeStyle.HeaderSize);
+                this.listViewStudentList.AutoResizeColumn(3, ColumnHeaderAutoResizeStyle.HeaderSize);
             }
             catch (Exception error)
             {
@@ -123,8 +141,7 @@ namespace StudentWinFormApp
                 stdIDErrorMessageLabel.Text = "Student ID cannot be empty";
                 stdIDErrorMessageLabel.ForeColor = Color.Red;
             }
-            Regex idRegex = new Regex(@"[A-Za-z0-9]+$");
-            if (idRegex.IsMatch(stdID))
+            if (this.IDRgxPattern.IsMatch(stdID))
             {
                 SetBtnClick();
             }
