@@ -29,7 +29,7 @@ namespace StudentWinFormApp
             this.listViewStudentList.Columns.Add("Date Of Birth");
             this.listViewStudentList.AutoResizeColumn(2, ColumnHeaderAutoResizeStyle.HeaderSize);
             this.listViewStudentList.Columns.Add("Age");
-
+            this.listViewStudentList.Font = new Font(listViewStudentList.Font, FontStyle.Bold);
         }
 
         private void StudentForm_Load(object sender, EventArgs e)
@@ -110,7 +110,7 @@ namespace StudentWinFormApp
                     Name = formattedName,
                     DateOfBirth = dateOfBirthDate,
                 };
-                this.listViewStudentList.Items.Add(new ListViewItem(
+                ListViewItem stdListViewItem = new ListViewItem(
                     new string[]
                     {
                         student.Id.ToString(),
@@ -118,7 +118,9 @@ namespace StudentWinFormApp
                         student.DateOfBirth.ToShortDateString(),
                         student.CalculateAge().ToString(),
                     }
-                ));
+                );
+                stdListViewItem.Font = new Font(stdListViewItem.Font, FontStyle.Regular);
+                this.listViewStudentList.Items.Add(stdListViewItem);
                 this.listViewStudentList.AutoResizeColumn(0, ColumnHeaderAutoResizeStyle.ColumnContent);
                 this.listViewStudentList.AutoResizeColumn(1, ColumnHeaderAutoResizeStyle.ColumnContent);
                 this.listViewStudentList.AutoResizeColumn(2, ColumnHeaderAutoResizeStyle.HeaderSize);

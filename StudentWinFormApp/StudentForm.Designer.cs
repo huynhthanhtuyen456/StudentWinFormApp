@@ -87,7 +87,7 @@
             // 
             // btnClick
             // 
-            btnClick.Location = new Point(131, 230);
+            btnClick.Location = new Point(180, 96);
             btnClick.Name = "btnClick";
             btnClick.Size = new Size(100, 23);
             btnClick.TabIndex = 6;
@@ -129,9 +129,9 @@
             // 
             // listViewStudentList
             // 
-            listViewStudentList.Location = new Point(12, 112);
+            listViewStudentList.Location = new Point(12, 125);
             listViewStudentList.Name = "listViewStudentList";
-            listViewStudentList.Size = new Size(327, 97);
+            listViewStudentList.Size = new Size(327, 161);
             listViewStudentList.TabIndex = 11;
             listViewStudentList.UseCompatibleStateImageBehavior = false;
             listViewStudentList.View = View.Details;
@@ -140,6 +140,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(800, 450);
             Controls.Add(listViewStudentList);
             Controls.Add(stdDateOfBirthErrorMessageLabel);
